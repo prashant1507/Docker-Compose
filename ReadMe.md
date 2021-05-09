@@ -8,3 +8,4 @@ This project contains some useful docker compose files:
 - [Selenoid](docker-compose-selenoid.yml)
 - [Zalenium](docker-compose-zalenium.yml)
 - [Android OpenSTF](docker-compose-openSTF.yml)
+- [Dynamic Selenium Grid 4](dynamic-selenium-grid/docker-compose-dynamic-grid.yml)
