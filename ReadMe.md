@@ -6,5 +6,5 @@ This project contains some useful docker compose files:
 - [Jenkins](docker-compose-jenkins.yml)
 - [Selenium Grid 4](docker-compose-selenium-grid.yml)
 - [Selenoid](docker-compose-selenoid.yml)
-- [Zalenium](docker-compose-zelenium.yml)
+- [Zalenium](docker-compose-zalenium.yml)
 - [Android OpenSTF](docker-compose-openSTF.yml)
