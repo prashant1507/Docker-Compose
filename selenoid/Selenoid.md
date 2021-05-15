@@ -31,8 +31,9 @@
       }
    }
     ```
-2. Run compose file - [docker-compose-selenoid.yml](../src/test/resources/docker/Selenoid/docker-compose-selenoid.yml)  
-   OR<br/>do below steps from 3 to 4 -------
+2. Run compose file - [docker-compose-selenoid.yml](../selenoid/docker-compose-selenoid.yml)  
+   OR  
+   do below steps from 3 to 4
 3. Pull below images:
    1. To run test cases: docker pull aerokube/selenoid
    2. To view the execution: docker pull aerokube/selenoid-ui
