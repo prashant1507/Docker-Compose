@@ -14,7 +14,7 @@
    [Reference Link to set docker daemon](https://gist.github.com/styblope/dc55e0ad2a9848f2cc3307d4819d819f)
 2. Set IP:PORT in [config.toml](../dynamic-selenium-grid/config.toml)
 3. Set config.toml in [docker-compose-dynamic-grid.yml](../dynamic-selenium-grid/docker-compose-dynamic-grid.yml)
-4. Run `docker-compose up`
+4. Run `docker-compose -f docker-compose-dynamic-grid.yml up -d`
 
 ### Notes:
 - Currently, the compose file and config.toml os not supporting video recording
