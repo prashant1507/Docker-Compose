@@ -46,7 +46,7 @@ services:
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
 
   opera:
-    image: selenium/node-opera:4.1.0-20211123
+    image: selenium/node-opera:4.0.0-beta-3-20210426
     restart: always
     volumes:
       - /dev/shm:/dev/shm
@@ -60,7 +60,7 @@ services:
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
 
   selenium-hub:
-    image: selenium/hub:4.0.0-beta-3-20210426
+    image: selenium/hub:4.1.0-20211123
     container_name: selenium-hub
     restart: always
     environment:
