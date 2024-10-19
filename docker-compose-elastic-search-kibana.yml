@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 services:
   elasticsearch:
     image: elasticsearch:8.15.3
@@ -7,36 +7,26 @@ services:
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./elasticsearch-data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
-      - "9300:9300"
-    networks:
-      - elastic
-    healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://localhost:9200 || exit 1" ]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-
+      - 9200:9200
   kibana:
-    image: kibana:8.15.3
     container_name: kibana
+    image: kibana:8.15.3
     restart: always
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch:elasticsearch
     environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200    # address of elasticsearch docker container which kibana will connect
     ports:
-      - "5601:5601"
-
-volumes:
-  esdata:
-    driver: local
-
-networks:
-  elastic:
-    driver: bridge
+      - 5601:5601
+    depends_on:
+      - elasticsearch                                   # kibana will start when elasticsearch has started
