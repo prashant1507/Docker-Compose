@@ -1,21 +1,42 @@
 version: "3.8"
 services:
   elasticsearch:
-    image: elasticsearch:7.12.0
+    image: elasticsearch:8.15.3
     container_name: elasticsearch
     restart: always
     environment:
+      - xpack.security.enabled=false
       - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
       - "9200:9200"
       - "9300:9300"
+    networks:
+      - elastic
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:9200 || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+
   kibana:
-    image: kibana:7.12.8
+    image: kibana:8.15.3
     container_name: kibana
     restart: always
     depends_on:
       - elasticsearch
     links:
-      - elasticsearch:elasticsearch  
+      - elasticsearch:elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
       - "5601:5601"
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
