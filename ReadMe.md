@@ -10,3 +10,5 @@ This project contains some useful docker compose files:
 - [Android OpenSTF](docker-compose-openSTF.yml)
 - [Dynamic Selenium Grid 4](dynamic-selenium-grid)
 - [Appim](appium)
+- [Vault](docker-compose-vault.yml)
+- [MinIO](docker-compose-minio.yml)
